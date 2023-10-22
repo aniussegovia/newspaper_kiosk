@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        H1{
+            font-family: sans-serif;
+            text-align: center;
+            color: darkred;
+        }
+        button{
+            width: 10%;
+            height: 50px;
+            position: relative;
+            left: 35%;
+            background-color: black;
+        }
+        button:hover{
+            background-color: darkgrey;
+        }
+    </style>
+</head>
+<body>
+    <h1> NOTICIAS DEL DIA </h1>
+    <iframe id="main" src="https://www.abc.com.py/" title="description" width="1500px" height="500px"></iframe>
+    <br>
+    <br>
+    <button id="prev" onclick="previ()"> ◀ </button>
+    <button id="next" onclick="cambiar()"> ▶ </button>
+    <button id="add" onclick="pop()"> ➕ </button>
+    
+    <script>   
+       var ind=0;     
+       let diario= ["https://www.abc.com.py/", "https://www.ultimahora.com/", "https://www.nytimes.com/international/"];
+            function cambiar(){
+                if (ind<(diario.length -1)){
+                    ind+=1;
+                }
+                else{
+                    ind=0
+                }
+                document.getElementById("main").src=diario[ind];
+            }
+            function previ(){
+                if (ind>0){
+                    ind-=1;
+                }
+                else{
+                    ind=2
+                }
+                document.getElementById("main").src=diario[ind];
+            }
+            function pop() {
+                let periodico = prompt("Agrega un periodico:", " ");
+                if (periodico != null){
+                    diario.push(periodico);
+                }
+                else{
+                    alert ("Agrega un periodico! ");
+                }
+            }
+    </script>
+</body>
+</html>
